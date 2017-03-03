@@ -14,6 +14,7 @@
 <script src="/resources/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/resources/js/chosen.jquery.min.js"></script>
 <link rel="stylesheet" href="/resources/css/chosen.min.css">
+<link rel="stylesheet" href="/resources/css/style.css">
 <script type="text/javascript">
 	$(function() {
 		$("select").chosen();
@@ -23,6 +24,9 @@
 body {
 	padding-bottom: 70px; 
 	padding-top: 70px;
+	
+	background-image: url(/resources/img/images (4).jpg);
+
 }
 @media (min-width: 1000px) {
     .navbar .navbar-nav {

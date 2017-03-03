@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="col-md-12"
-		style="margin-top: 30px; background: #292d39; color: white; font-size: 16px; text-align: center;">
+		style="margin-top: 30px; background: #9a9a9a; color: white; font-size: 16px; text-align: center;">
 		<div class="col-md-6" style="border-right: 1px solid #f4f4f4;">
 			Product</div>
 		<div class="col-md-2" style="border-right: 1px solid #f4f4f4;">
@@ -36,7 +36,7 @@
 				<div class="col-md-6">
 					<ul class="cart-1">
 					<li>Model : ${item.name}</li>
-				<li>Camera : ${item.camera.px}</li>
+				<li >Camera : ${item.camera.px}</li>
 				<li>Operation system: ${item.os.name}</li>
 				<li>Color: ${item.color.name }</li>
 				<li>Price : ${item.price }</li>
@@ -47,7 +47,7 @@
 			</div>
 			<div class="col-md-2"
 				style="height: 300px; border-right: 1px solid #f4f4f4; text-align: center;">
-				<div class="product_price">${cart.price}<span class="price">uan</span>
+				<div class="product_price">${cart.price}<span class="price">$</span>
 				</div>
 			</div>
 			<div class="col-md-2 cell_3"
