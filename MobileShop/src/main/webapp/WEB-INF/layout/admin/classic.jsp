@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<security:csrfMetaTags/>
+
 <meta charset="UTF-8">
 <script type="text/javascript" src="/resources/js/jquery-3.1.1.min.js"></script>
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
@@ -24,8 +24,7 @@
 body {
 	padding-bottom: 70px; 
 	padding-top: 70px;
-	
-	background-image: url(/resources/img/images (4).jpg);
+
 
 }
 @media (min-width: 1000px) {

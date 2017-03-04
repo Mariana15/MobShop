@@ -6,7 +6,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<security:csrfMetaTags/>
 <meta charset="UTF-8">
 <script type="text/javascript" src="/resources/js/jquery-3.1.1.min.js"></script>
 <link rel="stylesheet" href="/resources/css/bootstrap.min.css">

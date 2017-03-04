@@ -11,22 +11,11 @@
 <title>ShoppingCart</title>
 </head>
 <body>
-	<div class="col-md-12"
-		style="margin-top: 30px; background: #9a9a9a; color: white; font-size: 16px; text-align: center;">
-		<div class="col-md-6" style="border-right: 1px solid #f4f4f4;">
-			Product</div>
-		<div class="col-md-2" style="border-right: 1px solid #f4f4f4;">
-			Price</div>
-		<div class="col-md-2" style="border-right: 1px solid #f4f4f4;">
-			Quantity</div>
-		<div class="col-md-2">Delete</div>
-	</div>
+
 
 	<c:forEach items="${carts.items}" var="cart">
-		<div class="col-md-12 cart_item "
-			style="background: white; border-bottom: 1px solid #f4f4f4;">
-			<div class="col-md-6"
-				style="height: 300px; border-right: 1px solid #f4f4f4; text-align: left;">
+		<div class="col-md-12 cart_item ">
+			<div class="col-md-6">
 				<div class="col-md-6">
 					<h1>
 						<img class="img-rounded" width="100%"
@@ -35,11 +24,11 @@
 				</div>
 				<div class="col-md-6">
 					<ul class="cart-1">
-					<li>Model : ${item.name}</li>
-				<li >Camera : ${item.camera.px}</li>
-				<li>Operation system: ${item.os.name}</li>
-				<li>Color: ${item.color.name }</li>
-				<li>Price : ${item.price }</li>
+					<li>Model : ${cart.name}</li>
+				<li >Camera : ${cart.camera.px}</li>
+				<li>Operation system: ${cart.os.name}</li>
+				<li>Color: ${cart.color.name }</li>
+				<li>Price : ${cart.price }</li>
 
 
 					</ul>
@@ -67,12 +56,12 @@
 			</div>
 		</div>
 	</c:forEach>
-	</div>
+	
 
 
 	<div class="row" style="margin-right: 0px;">
 		<div style="height: 30px;"></div>
 	</div>
-	</div>
+	
 </body>
 </html>
