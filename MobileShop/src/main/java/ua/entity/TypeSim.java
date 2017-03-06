@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "typeSim", indexes=@Index(columnList = "_name"))
+@Table(name = "ts", indexes=@Index(columnList = "_name"))
 public class TypeSim extends AbstractEntity {
 
 	@Column(name = "_name")

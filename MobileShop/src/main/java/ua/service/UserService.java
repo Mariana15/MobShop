@@ -13,4 +13,5 @@ public interface UserService {
 	 void addItem(int Id, Principal principal);
 	 
 	 void deleteItems(int id,  Principal principal);
+	 
 }

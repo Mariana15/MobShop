@@ -24,5 +24,6 @@ public interface ItemService {
 	 void addUsers(int id, Principal principal);
 	
 	Page<Item> findAll(Pageable pageable, ItemFilter filter);
-
+	
+	
 }

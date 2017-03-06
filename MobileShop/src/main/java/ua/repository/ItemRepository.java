@@ -13,11 +13,11 @@ import ua.entity.Item;
 import ua.entity.Producer;
 
 public interface ItemRepository extends JpaRepository<Item, Integer>, JpaSpecificationExecutor<Item> {
-	@Query("SELECT  i FROM Item i LEFT JOIN FETCH i.category LEFT JOIN FETCH i.producer LEFT JOIN FETCH i.camera  LEFT JOIN FETCH i.os  LEFT JOIN FETCH i.color")
+	@Query("SELECT  i FROM Item i LEFT JOIN FETCH i.category LEFT JOIN FETCH i.producer LEFT JOIN FETCH i.camera  LEFT JOIN FETCH i.os  LEFT JOIN FETCH i.color LEFT JOIN FETCH i.diagonal LEFT JOIN FETCH i.fc LEFT JOIN FETCH i.memory LEFT JOIN FETCH i.noc LEFT JOIN FETCH i.nosc LEFT JOIN FETCH i.ts ")
 	List<Item> findAll();
-	@Query("SELECT  i FROM Item i LEFT JOIN FETCH i.category LEFT JOIN FETCH i.producer LEFT JOIN FETCH i.camera  LEFT JOIN FETCH i.os  LEFT JOIN FETCH i.color LEFT JOIN FETCH  i.description  WHERE i.id=:id")
+	@Query("SELECT  i FROM Item i LEFT JOIN FETCH i.category LEFT JOIN FETCH i.producer LEFT JOIN FETCH i.camera  LEFT JOIN FETCH i.os  LEFT JOIN FETCH i.color LEFT JOIN FETCH  i.description LEFT JOIN FETCH i.diagonal LEFT JOIN FETCH i.fc LEFT JOIN FETCH i.memory LEFT JOIN FETCH i.noc LEFT JOIN FETCH i.nosc LEFT JOIN FETCH i.ts  WHERE i.id=:id")
 	Item findOne(@Param("id")int id);
-	@Query(value="SELECT  i FROM Item i LEFT JOIN FETCH i.category LEFT JOIN FETCH i.producer LEFT JOIN FETCH i.camera  LEFT JOIN FETCH i.os  LEFT JOIN FETCH i.color ",
+	@Query(value="SELECT  i FROM Item i LEFT JOIN FETCH i.category LEFT JOIN FETCH i.producer LEFT JOIN FETCH i.camera  LEFT JOIN FETCH i.os  LEFT JOIN FETCH i.color LEFT JOIN FETCH i.diagonal LEFT JOIN FETCH i.fc LEFT JOIN FETCH i.memory LEFT JOIN FETCH i.noc LEFT JOIN FETCH i.nosc LEFT JOIN FETCH i.ts  ",
 			countQuery="SELECT count(i.id) FROM Item i")
 	Page<Item> findAll(Pageable pageable);
 	

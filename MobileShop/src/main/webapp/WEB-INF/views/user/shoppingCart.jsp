@@ -24,34 +24,29 @@
 				</div>
 				<div class="col-md-6">
 					<ul class="cart-1">
+					
 					<li>Model : ${cart.name}</li>
 				<li >Camera : ${cart.camera.px}</li>
 				<li>Operation system: ${cart.os.name}</li>
 				<li>Color: ${cart.color.name }</li>
 				<li>Price : ${cart.price }</li>
-
-
 					</ul>
 				</div>
 			</div>
-			<div class="col-md-2"
-				style="height: 300px; border-right: 1px solid #f4f4f4; text-align: center;">
+			<div class="col-md-2">
 				<div class="product_price">${cart.price}<span class="price">$</span>
 				</div>
 			</div>
-			<div class="col-md-2 cell_3"
-				style="height: 200px; border-right: 1px solid #f4f4f4; text-align: center;">
-
-				<div class="quantity_box">
-					
-
-				</div>
-
-
-
+			<div class="col-md-2">
+				<div class="product_description"><p class="size">${cart.description.name}.</p>
+			</div>
 			</div>
 			<div class="col-md-2" style="text-align: center;">
-				<a style="font-size: 30px;" 
+				<a class="btn btn-success" style = "margin-bottom: 20px;" 
+					href="#">Buy</a>
+			</div>
+			<div class="col-md-2" style="text-align: center;">
+				<a class="btn btn-danger" 
 					href="/shoppingCart/delete/${cart.id}">Delete</a>
 			</div>
 		</div>

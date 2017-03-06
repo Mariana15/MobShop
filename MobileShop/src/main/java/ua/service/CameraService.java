@@ -9,14 +9,10 @@ import ua.dto.filter.BasicFilter;
 import ua.entity.Camera;
 import ua.entity.Producer;
 
-
-
 public interface CameraService {
     List<Camera> findAll();
-	
 	void delete(int id);
 	void save(Camera form);
-
 	Camera findOne(int id);
 	Camera findByPx(Integer px);
 	Camera findOne(Integer px);

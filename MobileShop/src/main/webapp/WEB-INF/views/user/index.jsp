@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="/WEB-INF/custom.tld" prefix="custom"%>>
+<%@ taglib uri="/WEB-INF/custom.tld" prefix="custom"%>
 	<%@ page import="ua.entity.*" %>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,12 +25,103 @@ body {
 <body>
 <div class="container">
 
+<div class= "row">
+  <div class="col-md-3 col-xs-12">
+	<h3>Filter</h3>
+			<form:form class="form-horizontal" action="/" method="GET" modelAttribute="filter" id="filter">
+				<custom:hiddenInputs excludeParams="search, minPrice, maxPrice, producerIds,categoryIds,cameraIds,colorIds,diagonalIds,fcIds,memoryIds,nocIds,noscIds,osIds,tsIds"/>
+				<div class="form-group">
+					<div class="col-sm-12">
+	      				<form:input type="text" class="form-control" path="search" placeholder="Search"/>
+	    			</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-6 col-xs-6">
+	      				<form:input type="text" class="form-control" path="minPrice" placeholder="Min price"/>
+	    			</div>
+	    			<div class="col-sm-6 col-xs-6">
+	      				<form:input type="text" class="form-control" path="maxPrice" placeholder="Max price"/>
+	    			</div>
+				</div>
+				<div class="form-group">
+				<label for="id">Producer:</label>
+					<div class="col-sm-12">
+						<form:checkboxes items="${producers}" path="producerIds" itemLabel="name" itemValue="id"/>
+					</div>
+				</div>
+				<div class="form-group">
+				<label for="id">Category:</label>
+					<div class="col-sm-12">
+						<form:checkboxes items="${categorys}" path="categoryIds" itemLabel="name" itemValue="id"/>
+					</div>
+				</div>
+				<div class="form-group">
+				<label for="id">Camera:</label>
+					<div class="col-sm-12">
+						<form:checkboxes items="${cameras}" path="cameraIds" itemLabel="px" itemValue="id"/>
+					</div>
+				</div>
+				<div class="form-group">
+				<label for="id">Color:</label>
+					<div class="col-sm-12">
+						<form:checkboxes items="${colors}" path="colorIds" itemLabel="name" itemValue="id"/>
+					</div>
+				</div>
+				<div class="form-group">
+				<label for="id">Diagonal:</label>
+					<div class="col-sm-12">
+						<form:checkboxes items="${diagonals}" path="diagonalIds" itemLabel="d" itemValue="id"/>
+					</div>
+				</div>
+				<div class="form-group">
+				<label for="id">Front camera:</label>
+					<div class="col-sm-12">
+						<form:checkboxes items="${fcs}" path="fcIds" itemLabel="px" itemValue="id"/>
+					</div>
+				</div>	<div class="form-group">
+				<label for="id">Memory:</label>
+					<div class="col-sm-12">
+						<form:checkboxes items="${memories}" path="memoryIds" itemLabel="mb" itemValue="id"/>
+					</div>
+				</div>	
+				<div class="form-group">
+				<label for="id">Number of cores:</label>
+					<div class="col-sm-12">
+						<form:checkboxes items="${nocs}" path="nocIds" itemLabel="cor" itemValue="id"/>
+					</div>
+				</div>	
+				<div class="form-group">
+				<label for="id">Number of sim cards:</label>
+					<div class="col-sm-12">
+						<form:checkboxes items="${noscs}" path="noscIds" itemLabel="sim" itemValue="id"/>
+					</div>
+				</div>	
+				<div class="form-group">
+				<label for="id">Operation system:</label>
+					<div class="col-sm-12">
+						<form:checkboxes items="${oses}" path="osIds" itemLabel="name" itemValue="id"/>
+					</div>
+				</div>
+				<div class="form-group">
+				<label for="id">Type sim:</label>
+					<div class="col-sm-12">
+						<form:checkboxes items="${tss}" path="tsIds" itemLabel="name" itemValue="id"/>
+					</div>
+				</div>		
+			
+				<div class="form-group">
+    				<div class="col-sm-12">
+      					<button type="submit" class="btn btn-primary">Search</button>
+    				</div>
+  				</div>
+			</form:form>
+		
+	</div>         
 
-           
-<div class="row">
-	<div class="col-sm-6 col-sm-offset-3">
+	<div class="col-sm-6 col-sm-offset-1">
+	
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
+                            <ol class="carousel-indicators" style = "margin-left:0px" >
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 				<li data-target="#myCarousel" data-slide-to="1"></li>
 				<li data-target="#myCarousel" data-slide-to="2"></li>
@@ -64,7 +156,7 @@ body {
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                             </a>
 		</div>
-	</div>
+	
 </div>
  <div class="row">
 <c:forEach items="${page.content}" var="item">
@@ -86,7 +178,7 @@ body {
         </div>
 
     </div>	
-
+</div>
     
     <script type="text/javascript">
 $("#myCarousel").carousel();

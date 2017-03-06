@@ -20,7 +20,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a href="/" class="navbar-brand">
-                        <img src="/resources/img/images (1).jpg" class="img img-thumbnail" width="150px">
+                        <img src="/resources/img/images (1).jpg" class="img img-thumbnail" width="100px">
                     </a>
                 </div>
                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

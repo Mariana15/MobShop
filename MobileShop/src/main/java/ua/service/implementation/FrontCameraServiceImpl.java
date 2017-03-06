@@ -31,8 +31,8 @@ public class FrontCameraServiceImpl implements FrontCameraService{
 		frontCameraRepository.delete(id);
 	}
 	@Override
-	public void save(FrontCamera frontCamera) {
-		frontCameraRepository.save(frontCamera);
+	public void save(FrontCamera fc) {
+		frontCameraRepository.save(fc);
 	}
 
 	@Override

@@ -4,7 +4,7 @@ import java.beans.PropertyEditorSupport;
 
 import ua.entity.FrontCamera;
 import ua.service.FrontCameraService;
-;
+
 
 public class FrontCameraEditor extends PropertyEditorSupport{
 	private final FrontCameraService frontCameraService;

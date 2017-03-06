@@ -21,14 +21,16 @@
 
 	<div class="row">
 
-		<div class="col-md-8">
+		<div class="col-md-3">
 			<img class="img-responsive"
-				src="/images/item/${item.id}.jpg?version=${item.version} " alt="">
+				src="/images/item/${item.id}.jpg?version=${item.version} "width="600px" alt="">
 		</div>
 
-		<div class="col-md-4">
+		<div class="col-md-5">
 		<h3>Item Description</h3>
 			<p>${item.description.name}</p>
+			</div>
+			<div class="col-md-4">
 			<h3>Product</h3>
 			<p>${item.category.name}</p>
 			<h3>Item Details</h3>
@@ -37,7 +39,8 @@
 				<li>Camera : ${item.camera.px}</li>
 				<li>Operation system: ${item.os.name}</li>
 				<li>Color: ${item.color.name }</li>
-				<li>Price : ${item.price }</li>
+				<li>Price : ${item.price}</li>
+				
 			</ul>
 			<security:authorize access="isAuthenticated()">
 				<div>
@@ -47,7 +50,7 @@
 				</div>
 				</security:authorize>
 				<security:authorize access="!isAuthenticated()">
-				<h2> If you want buy item you must login<a href = "/login"></a> or <a href="/registration">register</a></h2>
+				<h2> If you want buy item you must <a href = "#">login</a> or <a href="/registration">register</a></h2>
 				</security:authorize>
 		</div>
 
