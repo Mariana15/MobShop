@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import ua.entity.Producer;
 
-public interface ProducerRepository extends JpaRepository<Producer, Integer>, JpaSpecificationExecutor<Producer>{
+public interface ProducerRepository extends JpaRepository<Producer, Integer>, JpaSpecificationExecutor<Producer> {
 	Producer findByName(String name);
 }

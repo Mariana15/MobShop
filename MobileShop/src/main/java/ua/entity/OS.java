@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "os", indexes=@Index(columnList = "_name"))
+@Table(name = "os", indexes = @Index(columnList = "_name"))
 public class OS extends AbstractEntity {
 
 	@Column(name = "_name")

@@ -35,14 +35,17 @@ public class ProducerController {
 	public Producer getForm() {
 		return new Producer();
 	}
+
 	@ModelAttribute("filter")
-	public BasicFilter getFilter(){
+	public BasicFilter getFilter() {
 		return new BasicFilter();
 	}
+
 	@InitBinder("producer")
 	protected void initBinder(WebDataBinder binder) {
 		binder.setValidator(new ProducerValidator(producerService));
 	}
+
 	@RequestMapping
 	public String show(Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") BasicFilter filter) {
 		model.addAttribute("page", producerService.findAll(filter, pageable));
@@ -52,7 +55,7 @@ public class ProducerController {
 	@RequestMapping("/delete/{id}")
 	public String delete(@PathVariable int id, @PageableDefault Pageable pageable, @ModelAttribute("filter") BasicFilter filter) {
 		producerService.delete(id);
-		return "redirect:/admin/producer"+getParams(pageable, filter);
+		return "redirect:/admin/producer" + getParams(pageable, filter);
 	}
 
 	@RequestMapping("/update/{id}")
@@ -62,14 +65,14 @@ public class ProducerController {
 		return "admin-producer";
 	}
 
-	@RequestMapping(method=POST)
-	public String save(@ModelAttribute("producer")@Valid Producer form, BindingResult br, Model model, SessionStatus status, @PageableDefault Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
-		if(br.hasErrors()){
+	@RequestMapping(method = POST)
+	public String save(@ModelAttribute("producer") @Valid Producer form, BindingResult br, Model model, SessionStatus status, @PageableDefault Pageable pageable, @ModelAttribute("filter") BasicFilter filter) {
+		if (br.hasErrors()) {
 			model.addAttribute("page", producerService.findAll(filter, pageable));
 			return "admin-producer";
 		}
 		producerService.save(form);
 		status.setComplete();
-		return "redirect:/admin/producer"+getParams(pageable, filter);
+		return "redirect:/admin/producer" + getParams(pageable, filter);
 	}
 }

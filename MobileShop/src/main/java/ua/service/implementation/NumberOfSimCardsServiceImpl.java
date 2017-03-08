@@ -8,16 +8,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ua.dto.filter.BasicFilter;
-import ua.entity.Category;
 import ua.entity.NumberOfSimCards;
-import ua.entity.Producer;
-import ua.repository.CategoryRepository;
 import ua.repository.NumberOfSimCardsRepository;
 import ua.service.NumberOfSimCardsService;
 import ua.service.specifications.NumberOfSimCardsSpecification;
 
 @Service
-public class NumberOfSimCardsServiceImpl implements NumberOfSimCardsService{
+public class NumberOfSimCardsServiceImpl implements NumberOfSimCardsService {
 	@Autowired
 	private NumberOfSimCardsRepository numberOfSimCardsRepository;
 
@@ -30,6 +27,7 @@ public class NumberOfSimCardsServiceImpl implements NumberOfSimCardsService{
 	public void delete(int id) {
 		numberOfSimCardsRepository.delete(id);
 	}
+
 	@Override
 	public void save(NumberOfSimCards form) {
 		numberOfSimCardsRepository.save(form);
@@ -53,10 +51,8 @@ public class NumberOfSimCardsServiceImpl implements NumberOfSimCardsService{
 	}
 
 	@Override
-	public Page<NumberOfSimCards> findAll(BasicFilter filter,
-			Pageable pageable) {
+	public Page<NumberOfSimCards> findAll(BasicFilter filter, Pageable pageable) {
 		return numberOfSimCardsRepository.findAll(new NumberOfSimCardsSpecification(filter), pageable);
 	}
 
-	
 }

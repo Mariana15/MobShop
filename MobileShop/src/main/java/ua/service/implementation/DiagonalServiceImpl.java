@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import ua.dto.filter.BasicFilter;
 import ua.entity.Diagonal;
-import ua.entity.Producer;
 import ua.repository.DiagonalRepository;
 import ua.service.DiagonalService;
 import ua.service.specifications.DiagonalSpecification;
@@ -28,6 +27,7 @@ public class DiagonalServiceImpl implements DiagonalService {
 	public void delete(int id) {
 		diagonalRepository.delete(id);
 	}
+
 	@Override
 	public void save(Diagonal form) {
 		diagonalRepository.save(form);
@@ -38,8 +38,6 @@ public class DiagonalServiceImpl implements DiagonalService {
 		return diagonalRepository.findOne(id);
 	}
 
-	
-
 	@Override
 	public Diagonal findByD(Integer d) {
 		// TODO Auto-generated method stub
@@ -48,7 +46,7 @@ public class DiagonalServiceImpl implements DiagonalService {
 
 	@Override
 	public Diagonal findOne(Integer d) {
-		
+
 		return diagonalRepository.findOne(d);
 	}
 

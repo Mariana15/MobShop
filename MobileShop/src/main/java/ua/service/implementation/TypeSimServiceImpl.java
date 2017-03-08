@@ -8,16 +8,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ua.dto.filter.BasicFilter;
-import ua.entity.Category;
-import ua.entity.Producer;
 import ua.entity.TypeSim;
-import ua.repository.CategoryRepository;
 import ua.repository.TypeSimRepository;
 import ua.service.TypeSimService;
 import ua.service.specifications.TypeSimSpecification;
 
 @Service
-public class TypeSimServiceImpl implements TypeSimService{
+public class TypeSimServiceImpl implements TypeSimService {
 	@Autowired
 	private TypeSimRepository typeSimRepository;
 
@@ -30,6 +27,7 @@ public class TypeSimServiceImpl implements TypeSimService{
 	public void delete(int id) {
 		typeSimRepository.delete(id);
 	}
+
 	@Override
 	public void save(TypeSim form) {
 		typeSimRepository.save(form);

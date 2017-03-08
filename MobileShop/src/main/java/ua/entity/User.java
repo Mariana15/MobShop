@@ -21,28 +21,25 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-@Table(name="_user", indexes=@Index(columnList = "_name"))
-public class User implements UserDetails{
+@Table(name = "_user", indexes = @Index(columnList = "_name"))
+public class User implements UserDetails {
 	private static final long serialVersionUID = -8288001889276940237L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name="_name")
+	@Column(name = "_name")
 	private String username;
-	
+
 	private String password;
-	
+
 	private String email;
 	@Enumerated
 	private Role role;
-	
+
 	@ManyToMany
-	@JoinTable(name="shop_cart",
-	joinColumns=@JoinColumn(name="id_user"),
-	inverseJoinColumns=@JoinColumn(name="id_item"))
+	@JoinTable(name = "shop_cart", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "id_item"))
 	private List<Item> items = new ArrayList<>();
-	
-	
+
 	public List<Item> getItems() {
 		return items;
 	}

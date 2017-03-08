@@ -8,16 +8,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ua.dto.filter.BasicFilter;
-import ua.entity.Category;
 import ua.entity.FrontCamera;
-import ua.entity.Producer;
-import ua.repository.CategoryRepository;
 import ua.repository.FrontCameraRepository;
 import ua.service.FrontCameraService;
 import ua.service.specifications.FrontCameraSpecification;
 
 @Service
-public class FrontCameraServiceImpl implements FrontCameraService{
+public class FrontCameraServiceImpl implements FrontCameraService {
 	@Autowired
 	private FrontCameraRepository frontCameraRepository;
 
@@ -30,6 +27,7 @@ public class FrontCameraServiceImpl implements FrontCameraService{
 	public void delete(int id) {
 		frontCameraRepository.delete(id);
 	}
+
 	@Override
 	public void save(FrontCamera fc) {
 		frontCameraRepository.save(fc);
@@ -42,7 +40,7 @@ public class FrontCameraServiceImpl implements FrontCameraService{
 
 	@Override
 	public FrontCamera findOne(Integer px) {
-	
+
 		return frontCameraRepository.findOne(px);
 	}
 
@@ -57,5 +55,4 @@ public class FrontCameraServiceImpl implements FrontCameraService{
 		return frontCameraRepository.findAll(new FrontCameraSpecification(filter), pageable);
 	}
 
-	
 }

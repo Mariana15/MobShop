@@ -17,9 +17,8 @@ import javax.persistence.Transient;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
-@Table(name = "item", indexes=@Index(columnList = "price"))
+@Table(name = "item", indexes = @Index(columnList = "price"))
 public class Item extends AbstractEntity {
-
 
 	@Column(name = "version", nullable = true)
 	private Integer version;
@@ -60,13 +59,13 @@ public class Item extends AbstractEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_os")
 	private OS os;
-	@ManyToOne(fetch= FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Description description;
-	
+
 	public Item() {
 
 	}
-	
+
 	public Description getDescription() {
 		return description;
 	}
@@ -75,11 +74,10 @@ public class Item extends AbstractEntity {
 		this.description = description;
 	}
 
-	@ManyToMany(mappedBy="items")
+	@ManyToMany(mappedBy = "items")
 	private List<User> users = new ArrayList<>();
 	@Transient
 	private MultipartFile file;
-	
 
 	public MultipartFile getFile() {
 		return file;
@@ -93,12 +91,7 @@ public class Item extends AbstractEntity {
 		this.file = file;
 	}
 
-
-	public Item(String name, BigDecimal price, Producer producer,
-			Category category, Color color, TypeSim ts,
-			NumberOfCores noc, NumberOfSimCards nosc,
-			Diagonal diagonal, Memory memory, Camera camera,
-			FrontCamera fc, OS os) {
+	public Item(String name, BigDecimal price, Producer producer, Category category, Color color, TypeSim ts, NumberOfCores noc, NumberOfSimCards nosc, Diagonal diagonal, Memory memory, Camera camera, FrontCamera fc, OS os) {
 		super();
 		this.name = name;
 		this.price = price;
@@ -114,9 +107,11 @@ public class Item extends AbstractEntity {
 		this.fc = fc;
 		this.os = os;
 	}
+
 	public Integer getVersion() {
 		return version;
 	}
+
 	public void setVersion(Integer version) {
 		this.version = version;
 	}
@@ -228,7 +223,5 @@ public class Item extends AbstractEntity {
 	public List<User> getUsers() {
 		return users;
 	}
-
-
 
 }

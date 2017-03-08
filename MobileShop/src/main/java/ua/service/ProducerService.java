@@ -6,9 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import ua.dto.filter.BasicFilter;
-import ua.dto.filter.ItemFilter;
 import ua.entity.Producer;
-
 
 public interface ProducerService {
 	List<Producer> findAll();
@@ -18,7 +16,7 @@ public interface ProducerService {
 	void save(Producer form);
 
 	Producer findOne(int id);
-	
+
 	Producer findOne(String name);
 
 	Page<Producer> findAll(BasicFilter filter, Pageable pageable);

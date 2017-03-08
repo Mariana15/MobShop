@@ -21,7 +21,7 @@ public class SizeTag extends SimpleTagSupport {
 	private String title = "Size";
 	private int size;
 	private int[] posibleSizes;
-	
+
 	@Override
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
@@ -29,10 +29,10 @@ public class SizeTag extends SimpleTagSupport {
 		sw.append(title);
 		sw.append("<span class='caret'></span></button>");
 		sw.append("<ul class='dropdown-menu'>");
-		for(int size : posibleSizes){
-			if(size == this.size){
+		for (int size : posibleSizes) {
+			if (size == this.size) {
 				sw.append("<li class='active'>");
-			}else{
+			} else {
 				sw.append("<li>");
 			}
 			sw.append("<a href='");
@@ -48,14 +48,14 @@ public class SizeTag extends SimpleTagSupport {
 		sw.append("</div>");
 		out.println(sw.toString());
 	}
-	
-	private void addAllParameters(){
+
+	private void addAllParameters() {
 		PageContext pageContext = (PageContext) getJspContext();
 		HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
 		Map<String, String[]> map = request.getParameterMap();
-		for(Entry<String, String[]> entry : map.entrySet()){
-			for(String value : entry.getValue()){
-				if(!entry.getKey().equals("size")){
+		for (Entry<String, String[]> entry : map.entrySet()) {
+			for (String value : entry.getValue()) {
+				if (!entry.getKey().equals("size")) {
 					sw.append(AMPER);
 					sw.append(entry.getKey());
 					sw.append(EQUAL);
@@ -68,18 +68,18 @@ public class SizeTag extends SimpleTagSupport {
 	public void setSize(int size) {
 		this.size = size;
 	}
-	
-	public void setPosibleSizes(String posibleSizes){
+
+	public void setPosibleSizes(String posibleSizes) {
 		StringTokenizer tokenizer = new StringTokenizer(posibleSizes, ", ");
 		this.posibleSizes = new int[tokenizer.countTokens()];
 		int i = 0;
-		while(tokenizer.hasMoreTokens()){
+		while (tokenizer.hasMoreTokens()) {
 			this.posibleSizes[i] = Integer.valueOf(tokenizer.nextToken());
 			i++;
 		}
 	}
-	
-	public void setTitle(String title){
+
+	public void setTitle(String title) {
 		this.title = title;
 	}
 }

@@ -4,9 +4,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import ua.dto.form.CameraForm;
 import ua.dto.form.DiagonalForm;
-import ua.service.CameraService;
+import ua.entity.Diagonal;
 import ua.service.DiagonalService;
 
 public class DiagonalValidator implements Validator {
@@ -15,6 +14,7 @@ public class DiagonalValidator implements Validator {
 	public DiagonalValidator(DiagonalService diagonalService) {
 		this.diagonalService = diagonalService;
 	}
+
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return clazz.equals(DiagonalForm.class);
@@ -22,8 +22,11 @@ public class DiagonalValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
+		Diagonal diagonal = (Diagonal) target;
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "", "Can`t be empty");
-		
-}
+		if (diagonalService.findOne(diagonal.getD()) != null) {
+			errors.rejectValue("name", "", "Already exist");
+		}
+	}
 
 }

@@ -10,11 +10,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "diagonal", indexes=@Index(columnList = "_d"))
+@Table(name = "diagonal", indexes = @Index(columnList = "_d"))
 public class Diagonal extends AbstractEntity {
 
 	@Column(name = "_d")
-	
+
 	private Integer d;
 	@OneToMany(mappedBy = "diagonal")
 	private List<Item> items = new ArrayList<>();
@@ -25,11 +25,10 @@ public class Diagonal extends AbstractEntity {
 
 	public Diagonal(Integer d, List<Item> items) {
 		super();
-		
+
 		this.d = d;
 		this.items = items;
 	}
-
 
 	public Integer getD() {
 		return d;

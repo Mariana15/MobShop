@@ -10,11 +10,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "nosc", indexes=@Index(columnList = "_sim"))
+@Table(name = "nosc", indexes = @Index(columnList = "_sim"))
 public class NumberOfSimCards extends AbstractEntity {
 
 	@Column(name = "_sim")
-	
+
 	private Integer sim;
 	@OneToMany(mappedBy = "nosc")
 	private List<Item> items = new ArrayList<>();
@@ -23,14 +23,12 @@ public class NumberOfSimCards extends AbstractEntity {
 
 	}
 
-	public NumberOfSimCards( Integer sim, List<Item> items) {
+	public NumberOfSimCards(Integer sim, List<Item> items) {
 		super();
-		
+
 		this.sim = sim;
 		this.items = items;
 	}
-
-
 
 	public Integer getSim() {
 		return sim;

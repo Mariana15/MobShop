@@ -66,53 +66,53 @@ public class IndexController {
 	private DescriptionService descriptionService;
 
 	@RequestMapping("/")
-	public String index(Principal principal, Model model, @PageableDefault Pageable pageable,@ModelAttribute("filter") ItemFilter filter){
-		if(principal!=null)
+	public String index(Principal principal, Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") ItemFilter filter) {
+		if (principal != null)
 			System.out.println(principal.getName());
 		model.addAttribute("page", itemService.findAll(pageable, filter));
 		model.addAttribute("producers", producerService.findAll());
 		model.addAttribute("cameras", cameraService.findAll());
 		model.addAttribute("categorys", categoryService.findAll());
 		model.addAttribute("colors", colorService.findAll());
-		model.addAttribute("diagonals",diagonalService.findAll());
+		model.addAttribute("diagonals", diagonalService.findAll());
 		model.addAttribute("fcs", frontCameraService.findAll());
 		model.addAttribute("memories", memoryService.findAll());
 		model.addAttribute("nocs", numberOfCoresService.findAll());
 		model.addAttribute("noscs", numberOfSimCardsService.findAll());
-		model.addAttribute("oses",osService.findAll());
-		model.addAttribute("tss",typeSimService.findAll());
-		model.addAttribute("descriptions",descriptionService.findAll());
+		model.addAttribute("oses", osService.findAll());
+		model.addAttribute("tss", typeSimService.findAll());
+		model.addAttribute("descriptions", descriptionService.findAll());
 		return "user-index";
 	}
-	
-	
+
 	@RequestMapping("/admin")
-	public String admin(){
+	public String admin() {
 		return "admin-admin";
 	}
-	
+
 	@RequestMapping("/login")
-	public String login(){
+	public String login() {
 		return "user-login";
 	}
-	
+
 	@RequestMapping("/registration")
-	public String registration(Model model){
+	public String registration(Model model) {
 		model.addAttribute("userForm", new User());
 		return "user-registration";
 	}
-	
-	@RequestMapping(value="/registration", method=POST)
-	public String registration(@ModelAttribute User user){
+
+	@RequestMapping(value = "/registration", method = POST)
+	public String registration(@ModelAttribute User user) {
 		userService.save(user);
 		return "redirect:/";
 	}
-	@RequestMapping(value="/pageItem/{id}")
-	public String showItemDetail(@PathVariable(value = "id")  int id, Model model){
+
+	@RequestMapping(value = "/pageItem/{id}")
+	public String showItemDetail(@PathVariable(value = "id") int id, Model model) {
 		model.addAttribute("item", itemService.findOne(id));
 		return "user-pageItem";
 	}
-	
+
 	@RequestMapping(value = "/ordernow/{id}")
 	public String ordernow(@PathVariable(value = "id") int id, Principal principal) {
 		userService.addItem(id, principal);
@@ -120,18 +120,27 @@ public class IndexController {
 
 	}
 
-	
 	@RequestMapping("/shoppingCart")
-	public String show(Model model, Principal principal) {	
-	    model.addAttribute("carts",userService.findByUsername(principal.getName()));  
+	public String show(Model model, Principal principal) {
+		model.addAttribute("carts", userService.findByUsername(principal.getName()));
+
 		return "user-shoppingCart";
 	}
-	
+
 	@RequestMapping(value = "/shoppingCart/delete/{id}", method = RequestMethod.GET)
 	public String deleteItems(@PathVariable(value = "id") int id, Principal principal) {
 		userService.deleteItems(id, principal);
 		return "redirect:/shoppingCart/";
 
 	}
-	
+
+	@RequestMapping(value = "/shoppingCart/buyItems/{id}")
+	public String buyItems(@PathVariable(value = "id") int id, Principal principal) {
+		String username = principal.getName();
+		String mailBody = userService.preparationToSend(username);
+		userService.sendMail("order", "marianabenk@gmail.com", mailBody);
+		userService.deleteItems(id, principal);
+		return "redirect:/";
+
+	}
 }

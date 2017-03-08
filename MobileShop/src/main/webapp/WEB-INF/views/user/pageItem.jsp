@@ -40,12 +40,19 @@
 				<li>Operation system: ${item.os.name}</li>
 				<li>Color: ${item.color.name }</li>
 				<li>Price : ${item.price}</li>
+				<li>Diagonal: ${item.diagonal.d }</li>
+				<li>Front camera: ${item.fc.px }</li>
+				<li>Memory: ${item.memory.mb }</li>
+				<li>Cores: ${item.noc.cor }</li>
+				<li>Sim cards: ${item.nosc.sim }</li>
+				<li>Type sim: ${item.ts.name }</li>
+				
 				
 			</ul>
 			<security:authorize access="isAuthenticated()">
 				<div>
 					<a href="/ordernow/${item.id}">
-						<button class="btn btn-cart" type="submit" id="add-to-cart"> Add to shopping cart</button>
+						<button class="btn btn-cart" type="submit" id="add-to-cart"> Add to cart</button>
 					</a>
 				</div>
 				</security:authorize>

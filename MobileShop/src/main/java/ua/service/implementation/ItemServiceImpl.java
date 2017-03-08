@@ -10,68 +10,30 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ua.dto.filter.BasicFilter;
 import ua.dto.filter.ItemFilter;
 import ua.dto.form.ItemForm;
 import ua.entity.Item;
 import ua.entity.User;
-import ua.repository.CameraRepository;
-import ua.repository.CategoryRepository;
-import ua.repository.ColorRepository;
-import ua.repository.DescriptionRepository;
-import ua.repository.DiagonalRepository;
-import ua.repository.FrontCameraRepository;
 import ua.repository.ItemRepository;
-import ua.repository.MemoryRepository;
-import ua.repository.NumberOfCoresRepository;
-import ua.repository.NumberOfSimCardsRepository;
-import ua.repository.OSRepository;
-import ua.repository.ProducerRepository;
-import ua.repository.TypeSimRepository;
 import ua.service.FileWriter;
+import ua.service.FileWriter.Folder;
 import ua.service.ItemService;
 import ua.service.UserService;
-import ua.service.FileWriter.Folder;
 import ua.service.specifications.ItemSpecification;
-
 
 @Service
 public class ItemServiceImpl implements ItemService {
 	@Autowired
 	private ItemRepository itemRepository;
-	@Autowired
-	private CategoryRepository categoryRepository;
-	@Autowired
-	private ProducerRepository producerRepository;
-	@Autowired
-	private CameraRepository cameraRepository;
-	@Autowired
-	private ColorRepository colorRepository;
-	@Autowired
-	private DiagonalRepository diagonalRepository;
-	@Autowired
-	private MemoryRepository memoryRepository;
-	@Autowired
-	private NumberOfCoresRepository numberOfCoresRepository;
-	@Autowired
-	private NumberOfSimCardsRepository numberOfSimCardsRepository;
-	@Autowired
-	private OSRepository osRepository;
-	@Autowired
-	private TypeSimRepository typeSimRepository;
-	@Autowired
-	private FrontCameraRepository frontCameraRepository;
+
 	@Autowired
 	private FileWriter fileWriter;
-	@Autowired
-	private DescriptionRepository decriptionRepository;
-	
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public List<Item> findAll() {
 		return itemRepository.findAll();
 	}
@@ -91,7 +53,8 @@ public class ItemServiceImpl implements ItemService {
 		item.setPrice(new BigDecimal(itemForm.getPrice().replace(',', '.')));
 		item.setProducer(itemForm.getProducer());
 		item.setCamera(itemForm.getCamera());
-		item.setColor(itemForm.getColor());;
+		item.setColor(itemForm.getColor());
+		;
 		item.setDiagonal(itemForm.getDiagonal());
 		item.setFc(itemForm.getFc());
 		item.setMemory(itemForm.getMemory());
@@ -100,24 +63,25 @@ public class ItemServiceImpl implements ItemService {
 		item.setOs(itemForm.getOs());
 		item.setTs(itemForm.getTs());
 		item.setDescription(itemForm.getDescription());
-		item=itemRepository.saveAndFlush(item);
-		
-		if(fileWriter.write(Folder.ITEM, itemForm.getFile(), item.getId())){
-			if(item.getVersion()==null)item.setVersion(0);
-			else item.setVersion(item.getVersion()+1);
+		item = itemRepository.saveAndFlush(item);
+
+		if (fileWriter.write(Folder.ITEM, itemForm.getFile(), item.getId())) {
+			if (item.getVersion() == null)
+				item.setVersion(0);
+			else
+				item.setVersion(item.getVersion() + 1);
 		}
 		itemRepository.save(item);
 	}
 
-
 	@Override
-	public Page<Item> findAll(Pageable pageable,ItemFilter filter ) {
-		Page<Item> items = itemRepository.findAll(new ItemSpecification(filter),pageable);
+	public Page<Item> findAll(Pageable pageable, ItemFilter filter) {
+		Page<Item> items = itemRepository.findAll(new ItemSpecification(filter), pageable);
 		return items;
 	}
 
 	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public ItemForm findOne(int id) {
 		Item entity = itemRepository.findOne(id);
 		ItemForm itemForm = new ItemForm();
@@ -139,7 +103,6 @@ public class ItemServiceImpl implements ItemService {
 		return itemForm;
 	}
 
-	
 	@Override
 	public List<Item> findByUserId(Principal principal) {
 		return itemRepository.findByUserId(userService.getUserId(principal));
@@ -148,13 +111,10 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	@Transactional
 	public void addUsers(int id, Principal principal) {
-	Item item = itemRepository.findOne(id);
-	 String name = principal.getName();
-     User user = userService.findByUsername(name);
-     item.getUsers().add(user);
+		Item item = itemRepository.findOne(id);
+		String name = principal.getName();
+		User user = userService.findByUsername(name);
+		item.getUsers().add(user);
 	}
 
-	
-
-	
 }

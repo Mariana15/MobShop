@@ -9,17 +9,18 @@ import org.springframework.data.jpa.domain.Specification;
 
 import ua.dto.filter.BasicFilter;
 import ua.entity.Memory;
-import ua.entity.Producer;
 
-public class MemorySpecification  implements Specification<Memory>{
+public class MemorySpecification implements Specification<Memory> {
 	private final BasicFilter filter;
 
 	public MemorySpecification(BasicFilter filter) {
 		this.filter = filter;
 	}
+
 	@Override
 	public Predicate toPredicate(Root<Memory> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-		if(filter.getSearch().isEmpty()) return null;
-		return cb.like(root.get("name"), filter.getSearch()+"%");
+		if (filter.getSearch().isEmpty())
+			return null;
+		return cb.like(root.get("name"), filter.getSearch() + "%");
 	}
 }

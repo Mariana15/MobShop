@@ -15,20 +15,21 @@ import ua.entity.Item;
 import ua.repository.DescriptionRepository;
 import ua.service.DescriptionService;
 import ua.service.specifications.DescriptionSpecification;
+
 @Service
-public class DescriptionServiceImpl  implements DescriptionService{
+public class DescriptionServiceImpl implements DescriptionService {
 
 	@Autowired
 	private DescriptionRepository descriptionRepository;
 
 	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public Description findOne(int id) {
 		return descriptionRepository.findOne(id);
 	}
 
 	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public List<Description> findAll() {
 		return descriptionRepository.findAll();
 	}
@@ -36,7 +37,7 @@ public class DescriptionServiceImpl  implements DescriptionService{
 	@Override
 	public void save(Description description) {
 		descriptionRepository.save(description);
-		
+
 	}
 
 	@Override
@@ -46,9 +47,9 @@ public class DescriptionServiceImpl  implements DescriptionService{
 		Hibernate.initialize(description.getItems());
 		for (Item item : description.getItems()) {
 			item.setDescription(null);
-		}	
+		}
 		descriptionRepository.delete(id);
-		
+
 	}
 
 	@Override
@@ -58,7 +59,7 @@ public class DescriptionServiceImpl  implements DescriptionService{
 
 	@Override
 	public Page<Description> findAll(Pageable pageable, BasicFilter filter) {
-		
+
 		return descriptionRepository.findAll(new DescriptionSpecification(filter), pageable);
 	}
 

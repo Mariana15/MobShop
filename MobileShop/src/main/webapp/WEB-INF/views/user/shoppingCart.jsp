@@ -30,6 +30,12 @@
 				<li>Operation system: ${cart.os.name}</li>
 				<li>Color: ${cart.color.name }</li>
 				<li>Price : ${cart.price }</li>
+				<li>Diagonal: ${cart.diagonal.d }</li>
+				<li>Front camera: ${cart.fc.px }</li>
+				<li>Memory: ${cart.memory.mb }</li>
+				<li>Cores: ${cart.noc.cor }</li>
+				<li>Sim cards: ${cart.nosc.sim }</li>
+				<li>Type sim: ${cart.ts.name }</li>
 					</ul>
 				</div>
 			</div>
@@ -43,7 +49,7 @@
 			</div>
 			<div class="col-md-2" style="text-align: center;">
 				<a class="btn btn-success" style = "margin-bottom: 20px;" 
-					href="#">Buy</a>
+					href="/shoppingCart/buyItems/${cart.id}">Buy</a>
 			</div>
 			<div class="col-md-2" style="text-align: center;">
 				<a class="btn btn-danger" 

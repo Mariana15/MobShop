@@ -1,15 +1,16 @@
 package ua.entity;
-import javax.persistence.Index;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "producer", indexes=@Index(columnList = "_name"))
+@Table(name = "producer", indexes = @Index(columnList = "_name"))
 public class Producer extends AbstractEntity {
 
 	@Column(name = "_name")

@@ -8,16 +8,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ua.dto.filter.BasicFilter;
-import ua.entity.Category;
 import ua.entity.OS;
-import ua.entity.Producer;
-import ua.repository.CategoryRepository;
 import ua.repository.OSRepository;
 import ua.service.OSService;
 import ua.service.specifications.OSSpecification;
 
 @Service
-public class OSServiceImpl implements OSService{
+public class OSServiceImpl implements OSService {
 	@Autowired
 	private OSRepository osRepository;
 
@@ -30,6 +27,7 @@ public class OSServiceImpl implements OSService{
 	public void delete(int id) {
 		osRepository.delete(id);
 	}
+
 	@Override
 	public void save(OS form) {
 		osRepository.save(form);

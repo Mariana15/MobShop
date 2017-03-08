@@ -7,7 +7,7 @@ import org.springframework.validation.Validator;
 import ua.entity.Category;
 import ua.service.CategoryService;
 
-public class CategoryValidator implements Validator{
+public class CategoryValidator implements Validator {
 
 	private final CategoryService categoryService;
 
@@ -24,7 +24,7 @@ public class CategoryValidator implements Validator{
 	public void validate(Object target, Errors errors) {
 		Category category = (Category) target;
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "", "Can`t be empty");
-		if(categoryService.findOne(category.getName())!=null){
+		if (categoryService.findOne(category.getName()) != null) {
 			errors.rejectValue("name", "", "Already exist");
 		}
 	}

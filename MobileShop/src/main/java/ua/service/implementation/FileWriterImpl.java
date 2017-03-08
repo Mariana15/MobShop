@@ -15,14 +15,14 @@ import ua.service.FileWriter;
 import ua.service.utils.Engine;
 
 @Service
-public class FileWriterImpl implements FileWriter{
+public class FileWriterImpl implements FileWriter {
 
 	@Override
 	public boolean write(Folder folder, MultipartFile file, int id) {
-		if(!file.isEmpty()){
+		if (!file.isEmpty()) {
 			File pathToHome = new File(System.getProperty("catalina.home"));
 			File pathToFolder = new File(pathToHome, "images" + File.separator + folder.name().toLowerCase());
-			if(!pathToFolder.exists()){
+			if (!pathToFolder.exists()) {
 				pathToFolder.mkdirs();
 			}
 			try {
@@ -30,10 +30,11 @@ public class FileWriterImpl implements FileWriter{
 				BufferedImage old = ImageIO.read(in);
 				Engine engine = new Engine(old);
 				BufferedImage present = engine.crop();
-				File pathToFile = new File(pathToFolder, String.valueOf(id)+".jpg");
+				File pathToFile = new File(pathToFolder, String.valueOf(id) + ".jpg");
 				ImageIO.write(present, "jpg", pathToFile);
 				return true;
-			} catch (IOException e) {}
+			} catch (IOException e) {
+			}
 		}
 		return false;
 	}

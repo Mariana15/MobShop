@@ -10,10 +10,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "fc", indexes=@Index(columnList = "_px"))
+@Table(name = "fc", indexes = @Index(columnList = "_px"))
 public class FrontCamera extends AbstractEntity {
 	@Column(name = "_px")
-	
+
 	private Integer px;
 	@OneToMany(mappedBy = "fc")
 	private List<Item> items = new ArrayList<>();
@@ -24,12 +24,10 @@ public class FrontCamera extends AbstractEntity {
 
 	public FrontCamera(Integer px, List<Item> items) {
 		super();
-		
+
 		this.px = px;
 		this.items = items;
 	}
-
-	
 
 	public Integer getPx() {
 		return px;

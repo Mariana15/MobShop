@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 
 import ua.dto.filter.BasicFilter;
 import ua.entity.Camera;
-import ua.entity.Producer;
 import ua.repository.CameraRepository;
 import ua.service.CameraService;
 import ua.service.specifications.CameraSpecification;
+
 @Service
-public class CameraServiceImpl implements CameraService{
+public class CameraServiceImpl implements CameraService {
 
 	@Autowired
 	private CameraRepository cameraRepository;
@@ -28,6 +28,7 @@ public class CameraServiceImpl implements CameraService{
 	public void delete(int id) {
 		cameraRepository.delete(id);
 	}
+
 	@Override
 	public void save(Camera camera) {
 		cameraRepository.save(camera);
@@ -38,11 +39,9 @@ public class CameraServiceImpl implements CameraService{
 		return cameraRepository.findOne(id);
 	}
 
-
-
 	@Override
 	public Camera findOne(Integer px) {
-		
+
 		return cameraRepository.findOne(px);
 	}
 
@@ -50,14 +49,12 @@ public class CameraServiceImpl implements CameraService{
 	public Camera findByPx(Integer px) {
 		// TODO Auto-generated method stub
 		return cameraRepository.findByPx(px);
-		
+
 	}
+
 	@Override
 	public Page<Camera> findAll(BasicFilter filter, Pageable pageable) {
 		return cameraRepository.findAll(new CameraSpecification(filter), pageable);
 	}
-
-	
-
 
 }

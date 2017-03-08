@@ -11,25 +11,25 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
-public class AllParams  extends SimpleTagSupport{
+public class AllParams extends SimpleTagSupport {
 
 	private final StringWriter sw = new StringWriter();
 	private final static String AMPER = "&";
 	private final static String QUEST = "?";
 	private final static String EQUAL = "=";
-	
+
 	public void doTag() throws JspException, IOException {
 		JspWriter out = getJspContext().getOut();
 		PageContext pageContext = (PageContext) getJspContext();
 		HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
 		Map<String, String[]> map = request.getParameterMap();
 		boolean isFirst = true;
-		for(Entry<String, String[]> entry : map.entrySet()){
-			for(String value : entry.getValue()){
-				if(isFirst){
+		for (Entry<String, String[]> entry : map.entrySet()) {
+			for (String value : entry.getValue()) {
+				if (isFirst) {
 					sw.append(QUEST);
 					isFirst = false;
-				}else{
+				} else {
 					sw.append(AMPER);
 				}
 				sw.append(entry.getKey());

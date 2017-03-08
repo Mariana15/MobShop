@@ -1,16 +1,13 @@
 package ua.validator;
 
-
-
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import ua.dto.form.NumberOfCoresForm;
 import ua.entity.Producer;
 import ua.service.ProducerService;
 
-public class ProducerValidator implements Validator{
+public class ProducerValidator implements Validator {
 	private final ProducerService producerService;
 
 	public ProducerValidator(ProducerService producerService) {
@@ -24,11 +21,11 @@ public class ProducerValidator implements Validator{
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		Producer producer = (Producer)target;
+		Producer producer = (Producer) target;
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "", "Can`t be empty");
-		if(producerService.findOne(producer.getName())!=null){
+		if (producerService.findOne(producer.getName()) != null) {
 			errors.rejectValue("name", "", "Already exist");
 		}
-		
+
 	}
 }

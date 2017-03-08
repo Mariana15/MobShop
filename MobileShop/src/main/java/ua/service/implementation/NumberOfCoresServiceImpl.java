@@ -8,16 +8,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ua.dto.filter.BasicFilter;
-import ua.entity.Category;
 import ua.entity.NumberOfCores;
-import ua.entity.Producer;
-import ua.repository.CategoryRepository;
 import ua.repository.NumberOfCoresRepository;
 import ua.service.NumberOfCoresService;
 import ua.service.specifications.NumberOfCoresSpecification;
 
 @Service
-public  class NumberOfCoresServiceImpl implements NumberOfCoresService{
+public class NumberOfCoresServiceImpl implements NumberOfCoresService {
 	@Autowired
 	private NumberOfCoresRepository numberOfCoresRepository;
 
@@ -30,6 +27,7 @@ public  class NumberOfCoresServiceImpl implements NumberOfCoresService{
 	public void delete(int id) {
 		numberOfCoresRepository.delete(id);
 	}
+
 	@Override
 	public void save(NumberOfCores form) {
 		numberOfCoresRepository.save(form);
@@ -57,5 +55,4 @@ public  class NumberOfCoresServiceImpl implements NumberOfCoresService{
 		return numberOfCoresRepository.findAll(new NumberOfCoresSpecification(filter), pageable);
 	}
 
-	
 }

@@ -10,11 +10,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "noc", indexes=@Index(columnList = "_cor"))
+@Table(name = "noc", indexes = @Index(columnList = "_cor"))
 public class NumberOfCores extends AbstractEntity {
 
 	@Column(name = "_cor")
-	
+
 	private Integer cor;
 	@OneToMany(mappedBy = "noc")
 	private List<Item> items = new ArrayList<>();
@@ -25,12 +25,10 @@ public class NumberOfCores extends AbstractEntity {
 
 	public NumberOfCores(Integer cor, List<Item> items) {
 		super();
-		
+
 		this.cor = cor;
 		this.items = items;
 	}
-
-	
 
 	public Integer getCor() {
 		return cor;

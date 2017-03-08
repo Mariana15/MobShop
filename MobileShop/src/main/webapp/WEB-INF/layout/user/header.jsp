@@ -5,7 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
   <style>
             .navbar-brand{
-                padding: 0 15px;
+                padding: 0 15px; 
             }
   </style>
 	
@@ -27,8 +27,9 @@
                 <ul class="nav navbar-nav">
                			 <li><a href="/registration">Registration</a></li>
                          <li> <a href="/">Shop</a></li>
+                         <security:authorize access="hasRole('ROLE_USER')">
                         <li><a href="/shoppingCart"><img src="/resources/img/empty-cart-light.png" class="img img-thumbnail" width="30px"></a></li>
-                        
+                        </security:authorize>
                             </ul>
                        
                     <security:authorize access="!isAuthenticated()">
@@ -71,7 +72,7 @@
 									<li><a href="/admin/nosc">Number of sim cards</a></li>
 									<li><a href="/admin/os">Operation system</a></li>
 									<li><a href="/admin/color">Color</a></li>
-									<li><a href="/admin/diagonal">Diagonal</a></li>
+									  <li><a href="/admin/diagonal">Diagonal</a></li>
 									<li><a href="/admin/fc">Front camera</a></li>
 									<li><a href="/admin/memory">Memory</a></li>
 									<li><a href="/admin/ts">Type sim</a></li>

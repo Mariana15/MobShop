@@ -8,16 +8,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ua.dto.filter.BasicFilter;
-import ua.entity.Category;
 import ua.entity.Memory;
-import ua.entity.Producer;
-import ua.repository.CategoryRepository;
 import ua.repository.MemoryRepository;
 import ua.service.MemoryService;
 import ua.service.specifications.MemorySpecification;
 
 @Service
-public class MemoryServiceImpl implements MemoryService{
+public class MemoryServiceImpl implements MemoryService {
 	@Autowired
 	private MemoryRepository memoryRepository;
 
@@ -30,6 +27,7 @@ public class MemoryServiceImpl implements MemoryService{
 	public void delete(int id) {
 		memoryRepository.delete(id);
 	}
+
 	@Override
 	public void save(Memory form) {
 		memoryRepository.save(form);
@@ -57,5 +55,4 @@ public class MemoryServiceImpl implements MemoryService{
 		return memoryRepository.findAll(new MemorySpecification(filter), pageable);
 	}
 
-	
 }

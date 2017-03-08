@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import ua.entity.Description;
 
-public interface DescriptionRepository  extends JpaRepository<Description, Integer>,JpaSpecificationExecutor<Description>{
-	
+public interface DescriptionRepository extends JpaRepository<Description, Integer>, JpaSpecificationExecutor<Description> {
+
 	Description findByName(String name);
 }

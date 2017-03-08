@@ -8,15 +8,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ua.dto.filter.BasicFilter;
-import ua.entity.Category;
 import ua.entity.Producer;
-import ua.repository.CategoryRepository;
 import ua.repository.ProducerRepository;
 import ua.service.ProducerService;
 import ua.service.specifications.ProducerSpecification;
 
 @Service
-public class ProducerServiceImpl implements ProducerService{
+public class ProducerServiceImpl implements ProducerService {
 	@Autowired
 	private ProducerRepository producerRepository;
 
@@ -29,7 +27,6 @@ public class ProducerServiceImpl implements ProducerService{
 	public void delete(int id) {
 		producerRepository.delete(id);
 	}
-	
 
 	@Override
 	public void save(Producer form) {
@@ -45,6 +42,7 @@ public class ProducerServiceImpl implements ProducerService{
 	public Producer findOne(String name) {
 		return producerRepository.findByName(name);
 	}
+
 	@Override
 	public Page<Producer> findAll(BasicFilter filter, Pageable pageable) {
 		return producerRepository.findAll(new ProducerSpecification(filter), pageable);

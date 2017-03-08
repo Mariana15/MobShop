@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import ua.dto.filter.BasicFilter;
 import ua.entity.Category;
-import ua.entity.Producer;
 import ua.repository.CategoryRepository;
 import ua.service.CategoryService;
 import ua.service.specifications.CategorySpecification;
@@ -29,6 +28,7 @@ public class CategoryServiceImpl implements CategoryService {
 	public void delete(int id) {
 		categoryRepository.delete(id);
 	}
+
 	@Override
 	public void save(Category form) {
 		categoryRepository.save(form);

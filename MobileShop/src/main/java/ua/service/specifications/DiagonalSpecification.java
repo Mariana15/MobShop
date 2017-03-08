@@ -9,17 +9,18 @@ import org.springframework.data.jpa.domain.Specification;
 
 import ua.dto.filter.BasicFilter;
 import ua.entity.Diagonal;
-import ua.entity.Producer;
 
-public class DiagonalSpecification  implements Specification<Diagonal>{
+public class DiagonalSpecification implements Specification<Diagonal> {
 	private final BasicFilter filter;
 
 	public DiagonalSpecification(BasicFilter filter) {
 		this.filter = filter;
 	}
+
 	@Override
 	public Predicate toPredicate(Root<Diagonal> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-		if(filter.getSearch().isEmpty()) return null;
-		return cb.like(root.get("name"), filter.getSearch()+"%");
+		if (filter.getSearch().isEmpty())
+			return null;
+		return cb.like(root.get("name"), filter.getSearch() + "%");
 	}
 }

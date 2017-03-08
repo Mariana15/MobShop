@@ -7,15 +7,13 @@ import org.springframework.validation.Validator;
 import ua.entity.Description;
 import ua.service.DescriptionService;
 
-public class DescriptionValidator  implements Validator{
-private final DescriptionService descriptionService;
-	
-	public DescriptionValidator (DescriptionService descriptionService){
-		this.descriptionService=descriptionService;
+public class DescriptionValidator implements Validator {
+	private final DescriptionService descriptionService;
+
+	public DescriptionValidator(DescriptionService descriptionService) {
+		this.descriptionService = descriptionService;
 	}
-	
-	
-	
+
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return Description.class.equals(clazz);
@@ -24,10 +22,10 @@ private final DescriptionService descriptionService;
 	@Override
 	public void validate(Object target, Errors errors) {
 		Description description = (Description) target;
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name","","cant be empty");
-		if(descriptionService.findByName(description.getName())!=null){
-			errors.rejectValue("name","", "Alredy exist");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "", "cant be empty");
+		if (descriptionService.findByName(description.getName()) != null) {
+			errors.rejectValue("name", "", "Alredy exist");
 		}
-		
+
 	}
 }

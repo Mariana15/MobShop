@@ -9,17 +9,18 @@ import org.springframework.data.jpa.domain.Specification;
 
 import ua.dto.filter.BasicFilter;
 import ua.entity.Camera;
-import ua.entity.Producer;
 
-public class CameraSpecification  implements Specification<Camera>{
+public class CameraSpecification implements Specification<Camera> {
 	private final BasicFilter filter;
 
 	public CameraSpecification(BasicFilter filter) {
 		this.filter = filter;
 	}
+
 	@Override
 	public Predicate toPredicate(Root<Camera> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-		if(filter.getSearch().isEmpty()) return null;
-		return cb.like(root.get("name"), filter.getSearch()+"%");
+		if (filter.getSearch().isEmpty())
+			return null;
+		return cb.like(root.get("name"), filter.getSearch() + "%");
 	}
 }

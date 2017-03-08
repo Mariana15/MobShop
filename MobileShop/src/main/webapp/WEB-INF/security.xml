@@ -13,10 +13,11 @@
 		<remember-me key="myAppKey" user-service-ref="userDetailsService"/>
 	</http>
 	
-	<!-- 	<beans:bean id="userDetailsService" class="ua.service.implementation.UserServiceImpl"> -->
-<!-- 		<beans:property name="repository" ref="userRepository"/> -->
-<!-- 		<beans:property name="encoder" ref="encoder"/> -->
-<!-- 	</beans:bean> -->
+		<beans:bean id="userDetailsService" class="ua.service.implementation.UserServiceImpl">
+		<beans:property name="userRepository" ref="userRepository"/>
+		<beans:property name="itemRepository" ref="itemRepository"/>
+		<beans:property name="encoder" ref="encoder"/>
+	</beans:bean>
 
 	<beans:bean id="encoder"
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">

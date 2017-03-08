@@ -8,16 +8,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ua.dto.filter.BasicFilter;
-import ua.entity.Category;
 import ua.entity.Color;
-import ua.entity.Producer;
-import ua.repository.CategoryRepository;
 import ua.repository.ColorRepository;
 import ua.service.ColorService;
 import ua.service.specifications.ColorSpecification;
 
 @Service
-public class ColorServiceImpl implements ColorService{
+public class ColorServiceImpl implements ColorService {
 	@Autowired
 	private ColorRepository colorRepository;
 
@@ -30,6 +27,7 @@ public class ColorServiceImpl implements ColorService{
 	public void delete(int id) {
 		colorRepository.delete(id);
 	}
+
 	@Override
 	public void save(Color form) {
 		colorRepository.save(form);

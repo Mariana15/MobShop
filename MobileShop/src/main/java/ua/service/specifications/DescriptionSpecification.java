@@ -10,20 +10,19 @@ import org.springframework.data.jpa.domain.Specification;
 import ua.dto.filter.BasicFilter;
 import ua.entity.Description;
 
-public class DescriptionSpecification implements Specification<Description>{
-	
-private final BasicFilter filter;
-	
-	public DescriptionSpecification (BasicFilter filter){
-		this.filter=filter;
+public class DescriptionSpecification implements Specification<Description> {
+
+	private final BasicFilter filter;
+
+	public DescriptionSpecification(BasicFilter filter) {
+		this.filter = filter;
 	}
-	
-	
+
 	@Override
-	public Predicate toPredicate(Root<Description> root, CriteriaQuery<?> query,
-			CriteriaBuilder cb) {
-		if(filter.getSearch().isEmpty()) return null;
-		return cb.like(root.get("name"), filter.getSearch()+"%");
+	public Predicate toPredicate(Root<Description> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		if (filter.getSearch().isEmpty())
+			return null;
+		return cb.like(root.get("name"), filter.getSearch() + "%");
 	}
 
 }

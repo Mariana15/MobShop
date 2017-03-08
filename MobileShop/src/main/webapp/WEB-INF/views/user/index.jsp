@@ -5,6 +5,8 @@
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+	<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="security"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -165,10 +167,19 @@ body {
                         <img src="/images/item/${item.id}.jpg?version=${item.version}" alt="">
                             <div class="caption">
                                 <h4 class="pull-right">${item.price}<span class="price">$</span></h4>
-                                <h4><a href="/pageItem/${item.id}">${item.name}</a></h4>
+                                <h4><a href="/pageItem/${item.id}">${item.producer.name}</a></h4>
                                 <p class="size">${item.description.name}.</p>
                            </div>
-                            
+                            <security:authorize access="isAuthenticated()">
+					<div>
+					<a href="/ordernow/${item.id}">
+						<button class="btn btn-success" type="submit" id="add-to-cart"> Add</button>
+					</a>
+					</div>
+					</security:authorize>
+				<security:authorize access="!isAuthenticated()">
+				<a href="/registration"><button class="btn btn-success" type="submit" id="add-to-cart"> Add</button></a>
+				</security:authorize>
 						</div>
                         </div>
                        </c:forEach> 

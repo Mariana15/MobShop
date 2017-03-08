@@ -10,11 +10,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "camera", indexes=@Index(columnList = "_px"))
+@Table(name = "camera", indexes = @Index(columnList = "_px"))
 public class Camera extends AbstractEntity {
 	@Column(name = "_px")
 	private Integer px;
-
 
 	@OneToMany(mappedBy = "camera")
 	private List<Item> items = new ArrayList<>();
@@ -23,14 +22,12 @@ public class Camera extends AbstractEntity {
 
 	}
 
-
 	public Camera(Integer px, List<Item> items) {
 		super();
-	
+
 		this.px = px;
 		this.items = items;
 	}
-
 
 	public Integer getPx() {
 		return px;
@@ -48,7 +45,6 @@ public class Camera extends AbstractEntity {
 		this.items = items;
 	}
 
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -57,7 +53,6 @@ public class Camera extends AbstractEntity {
 		result = prime * result + ((px == null) ? 0 : px.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -80,14 +75,5 @@ public class Camera extends AbstractEntity {
 			return false;
 		return true;
 	}
-
-
-
-
-
-	
-	
-
-	
 
 }

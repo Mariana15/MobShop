@@ -4,21 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import javax.persistence.criteria.Predicate;
-
 public class ItemFilter {
 	private final static Pattern PATTERN = Pattern.compile("^([0-9]{1,18}\\.[0-9]{0,2})|([0-9]{1,18}\\,[0-9]{0,2})|([0-9]{1,18})$");
 
 	private String search = "";
-	
+
 	private String maxPrice = "";
-	
+
 	private String minPrice = "";
-	
+
 	private Integer max;
-	
+
 	private Integer min;
-	
+
 	private List<Integer> producerIds = new ArrayList<>();
 	private List<Integer> categoryIds = new ArrayList<>();
 	private List<Integer> cameraIds = new ArrayList<>();
@@ -31,8 +29,7 @@ public class ItemFilter {
 	private List<Integer> osIds = new ArrayList<>();
 	private List<Integer> tsIds = new ArrayList<>();
 	private List<Integer> descriptionIds = new ArrayList<>();
-	
-	
+
 	public List<Integer> getDescriptionIds() {
 		return descriptionIds;
 	}
@@ -149,13 +146,9 @@ public class ItemFilter {
 		return maxPrice;
 	}
 
-	
-
 	public String getMinPrice() {
 		return minPrice;
 	}
-
-	
 
 	public static Pattern getPattern() {
 		return PATTERN;
@@ -176,7 +169,5 @@ public class ItemFilter {
 	public void setProducerIds(List<Integer> producerIds) {
 		this.producerIds = producerIds;
 	}
-
-
 
 }

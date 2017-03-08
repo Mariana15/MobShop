@@ -8,18 +8,19 @@ import javax.persistence.criteria.Root;
 import org.springframework.data.jpa.domain.Specification;
 
 import ua.dto.filter.BasicFilter;
-import ua.entity.Producer;
 import ua.entity.TypeSim;
 
-public class TypeSimSpecification  implements Specification<TypeSim>{
+public class TypeSimSpecification implements Specification<TypeSim> {
 	private final BasicFilter filter;
 
 	public TypeSimSpecification(BasicFilter filter) {
 		this.filter = filter;
 	}
+
 	@Override
 	public Predicate toPredicate(Root<TypeSim> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-		if(filter.getSearch().isEmpty()) return null;
-		return cb.like(root.get("name"), filter.getSearch()+"%");
+		if (filter.getSearch().isEmpty())
+			return null;
+		return cb.like(root.get("name"), filter.getSearch() + "%");
 	}
 }
