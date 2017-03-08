@@ -159,7 +159,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
 					protected PasswordAuthentication getPasswordAuthentication() {
 
-						return new PasswordAuthentication("marianabenk@gmail.com", "viktor09");
+						return new PasswordAuthentication("marianabenk@gmail.com", "******");
 
 					}
 
